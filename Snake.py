@@ -22,17 +22,18 @@ dy = 0
 score = 0
 direction = "right"
 
+#drawing objects
 def draw_square(column, row, color):
     canvas.create_rectangle(column * a, row * a, (column + 1) * a, (row + 1) * a, fill=color, outline="gray")
 def draw_apple():
     draw_square(apple[0], apple[1], "red")
-def kresli():
+def draw():
     canvas.delete('all')
 
     for i in range(len(snake_x)):
         draw_square(snake_x[i], snake_y[i], "#0eff00")
 
-
+#moves snake
 def move():
     x = snake_x[0]
     y = snake_y[0]
@@ -41,7 +42,7 @@ def move():
     snake_x.pop()
     snake_y.pop()
 
-
+#binding controls
 def up(e):
     global dx, dy, direction
     if direction != "down":
@@ -72,11 +73,11 @@ canvas.bind_all('<Down>', down)
 canvas.bind_all('<Right>', right)
 canvas.bind_all('<Left>', left)
 
-
+#mainloop
 def animation():
     global score, apple
     move()
-    kresli()
+    draw()
     draw_apple()
     for j in range(1,len(snake_x)):
         if snake_x[j] == snake_x[0] and snake_y[j] == snake_y[0]:
