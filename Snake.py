@@ -95,7 +95,7 @@ def animation():
                     ry = randint(0, grid_size - 1)
                     break
             break
-        apple = [randint(0, grid_size - 1), randint(0, grid_size - 1)]
+        apple = [rx, ry]
         score+=1
         root.title("Snake - Score: {} points".format(score))
     canvas.after(50, animation)
